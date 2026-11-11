@@ -1,4 +1,4 @@
-name: Atualizar cotação
+.github/workflows/cotacao.yml
 
 on:
   schedule:
