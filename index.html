@@ -500,6 +500,25 @@ th,td{padding:6px 7px}
 #qpop .qn{font-size:11.5px;color:#8fa07a;margin:6px 0 0}
 @media print{#qchip,#qpop{display:none}}
 :root.first body::before{opacity:.45}
+#px[readonly]{border-bottom:none!important;cursor:default;caret-color:transparent;pointer-events:none;user-select:text}
+/* cotação só no widget do canto superior direito, em destaque */
+#cfgcard .cr-pxw,#cfgcard #pxinfo,#cfgcard .cr-foot>a{display:none!important}
+#qchip{font-size:15px;padding:8px 16px;gap:8px;border-width:1.5px;box-shadow:0 4px 18px rgba(0,0,0,.45)}
+#qchip .qt{font-size:12px}
+#qchip .qv{font-size:22px;letter-spacing:-.01em}
+#qchip .qc{font-size:14px}
+#qchip::after{content:"▾";font-size:12px;color:#bcd68f;margin-left:2px}
+#qpop{top:calc(max(8px,env(safe-area-inset-top)) + 54px)}
+@media(max-width:640px){
+#qchip{font-size:13px;padding:6px 11px;gap:5px}
+#qchip .qt{font-size:10px}
+#qchip .qv{font-size:18px}
+#qchip .qc{font-size:12px}
+#qpop{top:calc(max(8px,env(safe-area-inset-top)) + 48px)}
+#cfgcard .cr-k{display:none!important}
+#cfgcard .cr-in::before{background-position:50% center!important}
+}
+@media(min-width:641px){#cfgcard .cr-in{justify-content:center;gap:14px}#cfgcard .cr-k{margin-bottom:4px}#cfgcard .cr-sep{display:none}}
 </style></head><body><main>
 <div class="top"><span class="tag">Ferramenta pessoal</span>
 <h1>Carteira de ações <b>da empresa</b></h1>
@@ -510,7 +529,7 @@ th,td{padding:6px 7px}
 <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap"><button id="hcb" type="button" style="background:rgba(255,255,255,.22);color:#fff;padding:6px 12px;font-size:12px">◐ Contraste alto</button><button id="snd" type="button" title="Som de caixa registadora: modestas123123 (Pixabay)" style="background:rgba(255,255,255,.22);color:#fff;padding:6px 12px;font-size:12px">🔊 Som ligado</button><button id="dimb" type="button" style="background:rgba(255,255,255,.22);color:#fff;padding:6px 12px;font-size:12px">🌙 Ambiente escuro</button></div></div>
 <div id="wban"></div>
 
-<div id="cfgcard" class="card cfgrail"><div class="cr-in"><div class="cr-k">Cotação VINCI</div><div class="cr-pxw"><input id="px" class="cr-px" type="number" step="0.01" min="0" aria-label="Cotação atual da VINCI em euros"><span class="cr-eur">€</span></div><div id="pxinfo" class="pxi"></div><div class="cr-sep"></div><label class="cr-row">Taxa de imposto (%)<input id="rate" type="number" step="0.5" min="0"></label><label class="cr-row">Colaborador<select id="emp"><option value="1">Sim</option><option value="2">Saí (com compensação)</option><option value="0">Saí (demissão/justa causa)</option></select></label><div class="cr-foot"><a href="https://www.google.com/search?q=acoes+vinci" target="_blank" rel="noopener">ver no Google</a><details class="opt"><summary>Opções ▸</summary><div class="optb"></div></details></div></div></div>
+<div id="cfgcard" class="card cfgrail"><div class="cr-in"><div class="cr-k">Parâmetros</div><div class="cr-pxw"><input id="px" class="cr-px" type="text" inputmode="none" readonly tabindex="-1" aria-readonly="true" aria-label="Cotação atual da VINCI em euros (automática)"><span class="cr-eur">€</span></div><div id="pxinfo" class="pxi"></div><div class="cr-sep"></div><label class="cr-row">Taxa de imposto (%)<input id="rate" type="number" step="0.5" min="0"></label><label class="cr-row">Colaborador<select id="emp"><option value="1">Sim</option><option value="2">Saí (com compensação)</option><option value="0">Saí (demissão/justa causa)</option></select></label><div class="cr-foot"><a href="https://www.google.com/search?q=acoes+vinci" target="_blank" rel="noopener">ver no Google</a><details class="opt"><summary>Opções ▸</summary><div class="optb"></div></details></div></div></div>
 
 <details id="impcard" class="card gl cs" open><summary><h2><b>Importar extrato</b>Castor International (Amundi)</h2><span class="sum" id="sm_imp">PDF da Amundi/Castor, texto colado ou ficheiros arrastados</span></summary>
 <div id="dzrow" class="dzrow"><p class="note wel" id="welcome"><b>Como começar:</b> arraste o seu primeiro extrato para a zona abaixo (ou registe uma operação à mão, mais abaixo). A página lê, organiza e vai mostrar os quadros — posição, resgates, bonificações, verificações — à medida que tiver dados.</p><label id="dz" class="dz"><svg class="marq" aria-hidden="true"><rect/></svg><span class="dzd">Arraste aqui os extratos (PDF) ou clique para escolher</span><span class="dzt">Toque para escolher os extratos (PDF)</span><small class="dzd">Pode largar vários ficheiros de uma vez. Cada um é acrescentado à lista.</small><input id="pdf" type="file" accept="application/pdf,.txt" multiple style="display:none"></label></div>
@@ -624,7 +643,7 @@ let MISSDIV=[],RESETTING=false,GLOWSTOP=false,IMPDONE=false,INTRODONE=false,DOCK
 // última cotação conhecida (22/10/2026, 13:25, Google Finance): garante que o widget mostra sempre um valor
 const QDEF={px:113.7,px2:113.7,at:1794242128000,src:'Yahoo Finance (última referência conhecida)',prev:111.6,w52lo:104.25,w52hi:143.15,chg:2.1,pct:1.88};
 const QS=()=>{if(QLIVE)return QLIVE;return(QREF&&+QREF.px>0&&(+QREF.at||0)>=QDEF.at)?QREF:QDEF};
-const pxMan=()=>{const Q=QS();return !!cfg.pxManual&&!(Q&&+Q.px>0&&(+Q.at||0)>(+cfg.pxAt||0))};
+const pxMan=()=>false;
 const view=()=>{cfg=CFG[WS];ops=ALL.filter(o=>(o.ws||'main')===WS);const Q=QS();if(Q&&+Q.px>0&&!pxMan()){cfg.px=+Q.px;cfg.px2=+Q.px2||0;cfg.pxAt=Q.at||0}};
 const bonusFor=n=>{n=Math.min(Math.floor(n)||0,100);return Math.floor(2*Math.min(n,10)+Math.max(0,Math.min(n-10,30))+0.5*Math.max(0,n-40))};
 let bqManual=false;
@@ -953,7 +972,7 @@ function pxInfo(){
       e.innerHTML=' <b>Em direto</b> · '+Q.src+' · '+base+(Q.chg?' · '+Q.chg:'')+' · consultada '+(m<1?'agora mesmo':'há '+m+' min')+(aberta?'':' · bolsa fechada: volta a atualizar ao abrir')+(atras?' <span class="warn">· desatualizada: falta o fecho de '+D(lc)+'</span>':'')+lm+' <a href="#" id="pxlivenow">Atualizar agora</a>';return;
     }
     const qd=parisDate(Q.at||0),atras=qd<lc;
-    e.innerHTML=' <b>Auto</b> · '+(Q.src?Q.src+' · ':'')+new Date(Q.at||0).toLocaleString('pt-PT',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})+(atras?' <span class="warn">· desatualizada: falta o fecho de '+D(lc)+'</span>':'')+lm;return;
+    e.innerHTML=' <b>Cotação automática</b> · '+(Q.src?Q.src+' · ':'')+new Date(Q.at||0).toLocaleString('pt-PT',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})+' · '+qAgo(Q.at||0)+(atras?' <span class="warn">· desatualizada: falta o fecho de '+D(lc)+'</span>':'')+lm;return;
   }
   const t=cfg.pxAt;
   if(!t){e.innerHTML=' <b>Confirme a cotação com a plataforma Castor.</b>'}
@@ -1293,7 +1312,7 @@ function renderAmu(){
     else msg='<p class="warn"><b>A página tem '+N(Math.abs(d))+(d>0?' unidades a menos':' unidades a mais')+' do que a Amundi nas disponíveis.</b> Veja em Verificações se há extratos ou operações em falta; se o desvio for de operações posteriores ao último extrato'+(stm?' ('+D(stm.dt)+')':'')+', registe-as em «Nova operação».</p>';
     if(ap>0&&ue>0&&Math.abs(uq*ap-ue)>0.05)msg+='<p class="note">Atenção: '+N(uq)+' × '+E(ap)+' = '+E(uq*ap)+', e não '+E(ue)+'. Confirme os valores copiados.</p>';
     h+=table(['','Plataforma (extratos)','Amundi','Diferença'],rows)+msg;
-    if(ap>0&&Math.abs(ap-px)>Math.max(0.01,ap*0.001))h+='<p><button type="button" data-amu="px">Usar '+E(ap)+' como cotação da página</button> <span class="note">A Amundi usa o valor da unidade do fundo'+(a.pdt?' de '+D(a.pdt):'')+'; a cotação de mercado pode diferir.</span></p>';
+    if(false)h+='<p><button type="button" data-amu="px">Usar '+E(ap)+' como cotação da página</button> <span class="note">A Amundi usa o valor da unidade do fundo'+(a.pdt?' de '+D(a.pdt):'')+'; a cotação de mercado pode diferir.</span></p>';
   }else h+='<p class="note">Preencha pelo menos as unidades disponíveis para ver a comparação.</p>';
   if(a.uq||a.ue||a.px||a.lq)h+='<p><button type="button" class="g" data-amu="clr">Limpar estes valores</button></p>';
   el.innerHTML=h;
@@ -1461,13 +1480,13 @@ function renderQPop(){
     if(d.low>0&&d.high>0)h+='<div class="qr"><div><span>'+qNf(d.low)+'</span><span>Intervalo do dia</span><span>'+qNf(d.high)+'</span></div><div class="qb"><i style="left:'+qPos(s.px,d.low,d.high)+'%"></i></div></div>';
     if(d.w52lo>0&&d.w52hi>0)h+='<div class="qr"><div><span>'+qNf(d.w52lo)+'</span><span>52 semanas</span><span>'+qNf(d.w52hi)+'</span></div><div class="qb"><i style="left:'+qPos(s.px,d.w52lo,d.w52hi)+'%"></i></div></div>';
     if(d.open||d.prev||d.high||d.low)h+='<div class="qg"><div><span>Abertura</span><b>'+qNf(d.open)+'</b></div><div><span>Fecho anterior</span><b>'+qNf(d.prev)+'</b></div><div><span>Máximo</span><b>'+qNf(d.high)+'</b></div><div><span>Mínimo</span><b>'+qNf(d.low)+'</b></div></div>';
-  }else h+='<p class="qw">Ainda não há cotação. Toque em «Atualizar cotação».</p>';
-  h+='<div class="qa"><button type="button" id="qupd">'+(QFORM?'Fechar':'Atualizar cotação')+'</button><a id="qgf" target="_blank" rel="noopener noreferrer" href="https://www.google.com/finance/quote/DG:EPA?hl=pt-PT">Google Finance ↗</a></div>';
+  }else h+='<p class="qw">Ainda não há cotação.</p>';
+  h+='<div class="qa"><a id="qgf" target="_blank" rel="noopener noreferrer" href="https://www.google.com/finance/quote/DG:EPA?hl=pt-PT">Google Finance ↗</a><a target="_blank" rel="noopener noreferrer" href="https://finance.yahoo.com/quote/DG.PA/">Yahoo Finance ↗</a></div><p class="qn">Cotação automática, só de leitura: atualiza-se sozinha (pode ter atraso).</p>';
   if(QFORM)h+='<div class="qf"><label>Cole o texto do Google Finance (opcional)</label><textarea id="qpaste" placeholder="Ex.: 105,65 EUR −1,35 (1,26%) 22 Oct, 13:25 CEST …"></textarea><div class="qrow"><div><label>Preço (€)</label><input id="qfp" inputmode="decimal" placeholder="105,65"></div><div><label>Fecho anterior (€)</label><input id="qfprev" inputmode="decimal" placeholder="107,00"></div></div><label>Data e hora</label><input id="qfat" type="datetime-local"><details><summary>Mais campos</summary><div class="qrow"><div><label>Abertura</label><input id="qfo" inputmode="decimal"></div><div><label>Máximo</label><input id="qfh" inputmode="decimal"></div></div><div class="qrow"><div><label>Mínimo</label><input id="qfl" inputmode="decimal"></div><div></div></div><div class="qrow"><div><label>52 sem. mínimo</label><input id="qfw1" inputmode="decimal"></div><div><label>52 sem. máximo</label><input id="qfw2" inputmode="decimal"></div></div></details><p class="qm" id="qmsg"></p><div class="qa"><button type="button" id="qsv">Guardar</button></div><p class="qn">Usa este valor em toda a plataforma até voltar à cotação automática.</p></div>';
   p.innerHTML=h;
   const gb=id=>p.querySelector('#'+id);
   const qr=p.querySelector('#qref');if(qr)qr.onclick=async ev=>{ev.preventDefault();cfg.pxManual=false;cfg.pxd=null;await saveCfg();render()};
-  gb('qupd').onclick=()=>{QFORM=!QFORM;renderQPop();if(QFORM){const pe=document.getElementById('qpaste');document.getElementById('qfp').value=s.px>0?String(s.px).replace('.',','):'';document.getElementById('qfat').value=qLocal(new Date());if(pe)pe.focus()}};
+  if(gb('qupd'))gb('qupd').onclick=()=>{QFORM=!QFORM;renderQPop();if(QFORM){const pe=document.getElementById('qpaste');document.getElementById('qfp').value=s.px>0?String(s.px).replace('.',','):'';document.getElementById('qfat').value=qLocal(new Date());if(pe)pe.focus()}};
   if(QFORM){
     const pe=gb('qpaste');
     pe.oninput=ev=>{const o=qParse(ev.target.value);if(!o.px)return;QPASTE=o;gb('qfp').value=String(o.px).replace('.',',');
@@ -1770,7 +1789,7 @@ function fixKnown(){
 }
 function render(){view();render0();renderSim();renderRep();renderSums();renderChecks();renderPair();renderOrigin();renderHist();renderDiv();renderAmu();renderSnap();renderExcl();renderWho();renderQChip();renderImpState();renderIrs();renderVis();applyDim();fixKnown();balanceTop();wsUI();pxInfo();if(!FIXING&&fixPlan().length){FIXING=true;setTimeout(async()=>{try{await autoFixBonus()}finally{FIXING=false}},0)}}
 function render0(){
-  if(document.activeElement!==$('px'))$('px').value=cfg.px||'';
+  $('px').value=cfg.px>0?cfg.px.toLocaleString('pt-PT',{minimumFractionDigits:2,maximumFractionDigits:2}):'';
   if(document.activeElement!==$('rate'))$('rate').value=cfg.rate;
   $('emp').value=String(cfg.emp===0?0:cfg.emp===2?2:1);
   const c=calc(),px=+cfg.px||0,rate=(+cfg.rate||0)/100;
@@ -2146,8 +2165,7 @@ $('trch').addEventListener('click',async e=>{
 });
 $('pav').oninput=e=>{cfg.pav=+e.target.value;renderRep()};$('pav').onchange=saveCfg;
 $('pu').oninput=e=>{cfg.pu=+e.target.value;renderRep()};$('pu').onchange=saveCfg;
-$('px').oninput=e=>{cfg.px=+e.target.value;cfg.pxAt=Date.now();cfg.pxManual=true;render()};
-$('px').onchange=e=>{saveCfg();const v=+e.target.value;if(v>0)qWrite(v,cfg.pxAt,{src:'valor introduzido por si'})};
+$('px').readOnly=true;
 $('rate').oninput=e=>{cfg.rate=+e.target.value;render()};
 $('rate').onchange=saveCfg;
 async function saveCfgFor(w){if(col){try{await col.doc(w==='sim'?'cfgsim':'cfg').set(CFG[w])}catch(e){}}else saveLocal()}
