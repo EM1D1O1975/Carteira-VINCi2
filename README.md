@@ -25,7 +25,7 @@ Esta versão atualiza a cotação da ação sozinha:
 - Uma tarefa agendada do GitHub (`.github/workflows/cotacao.yml`) corre de 10 em 10 minutos, de segunda a sexta, vai buscar a cotação a serviços públicos (Yahoo Finance e, em alternativa, Stooq) e guarda-a no ficheiro `cotacao.json`.
 - A página lê o `cotacao.json` de minuto a minuto e mostra o valor na etiqueta do canto superior direito, que diz sempre há quanto tempo foi atualizado.
 - **A cotação pode ter atraso** (normalmente 15 a 20 minutos) e **não é oficial**. Se os serviços falharem ou bloquearem o pedido, o ficheiro fica com o último valor e a página mostra-o com a respetiva idade.
-- A cotação é **só de leitura**: não se escreve nem se edita em nenhum sítio da página. A cotação aparece **só num sítio**: a etiqueta em destaque no canto superior direito, que ao tocar abre o painel com os detalhes. Todos os cálculos usam apenas essa cotação.
+- A cotação é **só de leitura**: não se escreve nem se edita em nenhum sítio da página. A cotação aparece **só num sítio**: o valor em destaque do cartão «Cotação VINCI», ao lado do logótipo, que ao tocar abre o painel com os detalhes. Todos os cálculos usam apenas essa cotação.
 
 ## Notas
 
