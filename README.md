@@ -32,3 +32,9 @@ Esta versão atualiza a cotação da ação sozinha:
 - A cotação da ação é introduzida por si (ou a partir do valor que vê na sua área pessoal da Amundi, em «Conferir com a Amundi»).
 - O cálculo da exclusão parcial de mais-valias (art. 43.º, n.º 5 do CIRS) está **desligado por defeito**, porque não está confirmado que este tipo de fundo se enquadre.
 - Os relatórios em PDF e Excel usam as bibliotecas jsPDF, jsPDF-AutoTable e SheetJS, carregadas a partir de cdnjs.cloudflare.com.
+
+## Ajuda para quem está a começar
+
+- Na primeira visita pode escolher um **guia passo a passo** ou ir direto ao assunto («Já conheço o plano»). O guia pode ser escondido ou voltar a ser ligado em «Os meus dados».
+- Cada termo técnico tem um **ⓘ** com uma explicação curta e uma ligação ao glossário.
+- A folha **Simulação** serve para experimentar «e se…» sem alterar os registos reais. Tem um **exemplo com dados fictícios** para aprender a usar a ferramenta.

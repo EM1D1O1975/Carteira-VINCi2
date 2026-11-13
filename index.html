@@ -512,12 +512,64 @@ th,td{padding:6px 7px}
 #pxinfo .neg{color:#ff8a65;font-weight:800}
 #qpop{position:absolute}
 :root body::before,:root.first body::before{opacity:.4!important;width:min(40vw,440px)!important;height:min(62vh,500px)!important;right:max(0px,calc(50% - 520px))!important}
+@media(min-width:641px){
+#topgrid::before,:root.first #topgrid::before{display:none!important}
+#cfgcard[hidden]{display:block!important}
+#cfgcard,.topgrid.solo #cfgcard{grid-row:1;grid-column:1;align-self:start;position:relative;z-index:1;background:transparent!important;border:none!important;border-radius:0!important;box-shadow:none!important;margin:0 0 10px!important;min-height:0!important;padding:0!important;pointer-events:none}
+:root.dim #cfgcard.dm,:root #cfgcard.dm{filter:none!important;opacity:1!important}
+.topgrid>#impcard,.topgrid.solo>#impcard{grid-row:2;border-radius:16px!important}
+#cfgcard .cr-in{position:relative;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:min(26vh,190px) auto auto auto;column-gap:0;row-gap:0;padding:0;height:auto;box-sizing:border-box;pointer-events:none}
+#cfgcard .cr-in>*{pointer-events:auto;position:relative;z-index:1}
+#cfgcard .cr-in::before{content:"";grid-row:1;grid-column:1/-1;background:var(--mascote) no-repeat 73% center/contain;pointer-events:none;display:block!important}
+#cfgcard .cr-in::after{content:"";grid-row:2/5;grid-column:1/-1;border:1px solid rgba(188,214,143,.28);border-radius:10px;background:rgba(255,255,255,.04);pointer-events:none;z-index:0}
+#cfgcard .cr-sep{display:none}
+#cfgcard .cr-k{position:absolute;left:0;top:calc(min(26vh,190px)/2 - 32px);width:130px;font-size:10px;letter-spacing:.1em;line-height:1.2}
+#cfgcard .cr-pxw{position:absolute;left:0;top:calc(min(26vh,190px)/2 - 14px);width:130px;gap:3px;min-width:0}
+#cfgcard .cr-px{flex:1 1 0;width:auto;min-width:0;font-size:26px;border:none!important;text-decoration:none}
+#cfgcard .cr-eur{font-size:16px;flex:none}
+#cfgcard .cr-row{display:flex;flex-direction:column;align-items:stretch;gap:2px;font-size:10px;line-height:1.2;margin:0;min-width:0;padding:8px 10px 2px}
+#cfgcard label.cr-row:nth-of-type(1){grid-column:1;grid-row:2}
+#cfgcard label.cr-row:nth-of-type(2){grid-column:2;grid-row:2}
+#cfgcard .cr-row input,#cfgcard .cr-row select{width:100%;min-width:0;padding:3px 0;font-size:14px;box-sizing:border-box;background:transparent!important;border:none!important;border-radius:0!important;color:#f1f5e8;text-decoration:none}
+#cfgcard #pxinfo{grid-column:1/-1;grid-row:3;font-size:11px;line-height:1.35;margin:0;padding:2px 10px 0;min-width:0}
+#cfgcard #pxinfo a,#cfgcard .pxi a{color:#ffd9a8;text-decoration:none!important;font-weight:800}
+#cfgcard .cr-foot{display:contents}
+#cfgcard .cr-foot>a{grid-column:1;grid-row:4;font-size:11px;align-self:center;padding:4px 10px 8px}
+#cfgcard .cr-foot>details.opt{grid-column:2;grid-row:4;align-self:center;justify-self:end;padding:4px 10px 8px;min-width:0}
+#cfgcard .cr-foot details.opt>summary{font-size:11px;text-decoration:none}
+
+#topgrid{grid-template-columns:1fr!important}
+.topgrid>#impcard,.topgrid.solo>#impcard{grid-column:1}
+#cfgcard,.topgrid.solo #cfgcard{max-width:640px;margin-bottom:14px!important}
+#cfgcard .cr-in{max-width:640px}
+#cfgcard .cr-in::before{background-position:62% center!important}
+#cfgcard .cr-k{width:260px;font-size:12px;top:calc(min(26vh,190px)/2 - 50px)}
+#cfgcard .cr-pxw{width:260px;top:calc(min(26vh,190px)/2 - 28px)}
+#cfgcard .cr-px{font-size:46px}
+#cfgcard .cr-eur{font-size:24px}
+body::before,:root.first body::before{display:none!important}
+:root.first{--fr:0px}
+}
+.ih{background:transparent;border:none;color:inherit;opacity:.5;font-size:.95em;padding:0 0 0 5px;cursor:pointer;line-height:1;vertical-align:baseline;box-shadow:none;min-width:0;text-transform:none;letter-spacing:0}
+.ih:hover,.ih:focus{opacity:1}
+#ihp{position:absolute;z-index:47;background:#0f1418;color:#f1f5e8;border:1px solid rgba(188,214,143,.45);border-radius:12px;padding:10px 12px;font-size:12.5px;line-height:1.5;box-shadow:0 10px 30px rgba(0,0,0,.5);text-transform:none;letter-spacing:0;font-weight:400}
+#ihp b{display:block;margin-bottom:2px;font-size:13px;color:#ffd9a8;font-weight:700}
+#ihp a{color:#9ccc65;font-weight:700;display:inline-block;margin-top:5px}
+#guia{margin:12px 0}
+#guia .gh{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+#guia h2{margin:0;font-size:16px}
+#guia ol.gl{list-style:none;margin:8px 0;padding:0;display:grid;gap:10px}
+#guia li{display:flex;gap:10px;align-items:flex-start}
+#guia .gk{flex:none;width:22px;height:22px;border:2px solid #587c28;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff}
+#guia li.ok .gk{background:#587c28}
+#guia li small{display:block;font-size:12.5px;opacity:.85;margin:1px 0 5px;font-weight:400;text-transform:none;letter-spacing:0}
+@media print{#ihp,#guia{display:none}}
 </style></head><body><main>
 <div class="top"><span class="tag">Ferramenta pessoal</span>
 <h1>Carteira de ações <b>da empresa</b></h1>
 <p>Para colaboradores do grupo VINCI em Portugal. Compras, bonificações, dividendos e resgates. Cálculo FIFO, mais-valias e imposto estimado, em EUR.</p>
 <span class="badge" id="mode">A ligar…</span><span class="badge" id="whoami" hidden></span><details class="legal"><summary class="badge" aria-label="Aviso: ferramenta pessoal, não oficial">ⓘ Ferramenta pessoal · não oficial</summary><div class="legalpop" role="note"><b>Ferramenta pessoal, não oficial.</b><br>Não é um simulador nem um consultor oficial. Não tem qualquer ligação à VINCI, à ANA, à Portway, à Amundi ou à Castor. Os valores são estimativas informativas e não constituem aconselhamento financeiro ou fiscal: confirme sempre com os extratos oficiais e, se necessário, com a Autoridade Tributária ou um profissional qualificado.</div></details>
-<span class="badge" id="exclpill" hidden title="O imposto estimado usa a exclusão parcial do art. 43.º, n.º 5 do CIRS (não confirmada para o FCPE)">exclusão parcial ativa</span><span class="badge" id="snappill" hidden title="Saldo inicial: custos e mais-valias anteriores são aproximados">⚠ saldo inicial</span><span class="badge" id="estpill" hidden title="Há operações estimadas (provisórias) incluídas nos totais">≈ estimativas</span><div id="wsw"><div class="seg"><button id="wmain">Os meus registos</button><button id="wsim">Folha em branco (simulação)</button></div></div>
+<span class="badge" id="exclpill" hidden title="O imposto estimado usa a exclusão parcial do art. 43.º, n.º 5 do CIRS (não confirmada para o FCPE)">exclusão parcial ativa</span><span class="badge" id="snappill" hidden title="Saldo inicial: custos e mais-valias anteriores são aproximados">⚠ saldo inicial</span><span class="badge" id="estpill" hidden title="Há operações estimadas (provisórias) incluídas nos totais">≈ estimativas</span><div id="wsw"><div class="seg"><button id="wmain">Os meus registos</button><button id="wsim" title="Folha para experimentar «e se…» sem alterar os registos reais">Simulação (experimentar)</button></div></div>
 <div id="expw" style="margin-top:10px"><button id="expdf" style="background:#fff;color:#4a6e22">Exportar</button> <span id="expmsg" style="font-size:12px"></span></div>
 <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap"><button id="hcb" type="button" style="background:rgba(255,255,255,.22);color:#fff;padding:6px 12px;font-size:12px">◐ Contraste alto</button><button id="snd" type="button" title="Som de caixa registadora: modestas123123 (Pixabay)" style="background:rgba(255,255,255,.22);color:#fff;padding:6px 12px;font-size:12px">🔊 Som ligado</button><button id="dimb" type="button" style="background:rgba(255,255,255,.22);color:#fff;padding:6px 12px;font-size:12px">🌙 Ambiente escuro</button></div></div>
 <div id="wban"></div>
@@ -728,9 +780,9 @@ function renderWho(){
 function askNome(){
   if(!LOCALONLY||perfil()||document.getElementById('nomem'))return;
   const m=document.createElement('div');m.className='exmodal';m.id='nomem';m.style.zIndex=70;m.setAttribute('role','dialog');m.setAttribute('aria-modal','true');
-  m.innerHTML='<div class="exbox"><h3>Bem-vindo(a)!</h3><p style="font-size:13.5px;line-height:1.5;margin:6px 0">Como quer ser tratado(a)? Escreva o seu nome ou uma alcunha.</p><p class="note" style="margin:4px 0 8px">Fica guardado só neste aparelho. Serve para, da próxima vez, lhe dizer se está a <b>retomar a sua sessão</b> ou a começar de novo. Não é uma conta nem tem palavra-passe.</p><label class="exrow" style="display:block"><span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em">O seu nome</span><input id="nomein" type="text" maxlength="30" autocomplete="off" placeholder="ex.: Maria" style="width:100%;box-sizing:border-box;font-size:16px;padding:9px 10px;margin-top:4px"></label><div class="exact"><button type="button" id="nomego">Continuar</button><button type="button" id="nomeno" class="g">Agora não</button></div></div>';
+  m.innerHTML='<div class="exbox"><h3>Bem-vindo(a)!</h3><p style="font-size:13.5px;line-height:1.5;margin:6px 0">Como quer ser tratado(a)? Escreva o seu nome ou uma alcunha.</p><p class="note" style="margin:4px 0 8px">Fica guardado só neste aparelho. Serve para, da próxima vez, lhe dizer se está a <b>retomar a sua sessão</b> ou a começar de novo. Não é uma conta nem tem palavra-passe.</p><label class="exrow" style="display:block"><span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em">O seu nome</span><input id="nomein" type="text" maxlength="30" autocomplete="off" placeholder="ex.: Maria" style="width:100%;box-sizing:border-box;font-size:16px;padding:9px 10px;margin-top:4px"></label><fieldset style="border:1px solid #b9cf94;border-radius:10px;margin:10px 0 0;padding:6px 10px"><legend style="font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#4a6e22;padding:0 6px">Como prefere começar?</legend><label class="exopt"><input type="radio" name="ajm" value="guiado" checked><span><b>Com um guia passo a passo</b><small>Mostra os primeiros passos. Pode escondê-lo quando quiser.</small></span></label><label class="exopt"><input type="radio" name="ajm" value="normal"><span><b>Já conheço o plano</b><small>Vai direto ao assunto, sem guia. As explicações ficam no ⓘ de cada termo.</small></span></label></fieldset><div class="exact"><button type="button" id="nomego">Continuar</button><button type="button" id="nomeno" class="g">Agora não</button></div></div>';
   document.body.appendChild(m);
-  const fin=nome=>{savePerfil({nome,desde:Date.now(),ultima:Date.now(),visitas:1,skip:!nome});m.remove();renderWho()};
+  const fin=nome=>{savePerfil({nome,desde:Date.now(),ultima:Date.now(),visitas:1,skip:!nome});const r=m.querySelector('input[name=ajm]:checked');ajSet(r?r.value:'normal');m.remove();renderWho();renderAjuda()};
   m.querySelector('#nomego').onclick=()=>fin(m.querySelector('#nomein').value.trim());
   m.querySelector('#nomeno').onclick=()=>fin('');
   m.querySelector('#nomein').onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();fin(m.querySelector('#nomein').value.trim())}};
@@ -841,7 +893,7 @@ function openData(){
   const prN=pr&&pr.data&&Array.isArray(pr.data.ops)?pr.data.ops.length:0,loc=AUTOMIG?readLocal():null,locOk=!!(loc&&hasData(loc));
   const rec=(prN>0||locOk)?'<fieldset><legend>Recuperar</legend>'+(prN>0?'<p class="note">Cópia automática de antes do último reset ('+new Date(pr.at).toLocaleString('pt-PT',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})+'): '+prN+' operações.</p><div class="exact" style="justify-content:flex-start"><button type="button" id="recpre" class="g">Recuperar dados de antes do reset</button></div>':'')+(locOk?'<p class="note">Cópia guardada neste navegador (antes de usar a conta): '+loc.ops.length+' operações.</p><div class="exact" style="justify-content:flex-start"><button type="button" id="recloc" class="g">Recuperar a cópia deste navegador</button></div>':'')+'<p class="note" id="recmsg" style="min-height:1.2em"></p></fieldset>':'';
   const nm=LOCALONLY?'<fieldset><legend>O seu nome</legend><div class="exact" style="justify-content:flex-start;flex-wrap:wrap;align-items:center"><input id="whoin" type="text" maxlength="30" placeholder="ex.: Maria" autocomplete="off" style="font-size:15px;padding:8px 10px;min-width:0;flex:1 1 140px"><button type="button" id="whosave" class="g">Guardar nome</button></div><p class="note" style="margin:6px 0 0">Fica só neste aparelho. Serve para lhe dizer, da próxima vez, se está a retomar a sua sessão.</p></fieldset>':'';
-  m.innerHTML='<div class="exbox"><h3>Os meus dados</h3><p style="font-size:13.5px;line-height:1.5;margin:6px 0">'+st+'</p><p class="note">Agora: <span id="datacount">'+ALL.length+' operações e '+((CFG.main.stm||[]).length)+' extratos</span>.</p>'+nm+rec+'<fieldset><legend>Cópia de segurança</legend><p class="note">Um ficheiro com as operações, os totais dos extratos e as definições. Não inclui os PDF nem nomes ou números de conta. Serve para guardar uma cópia ou levar os dados para outro aparelho.</p><div class="exact" style="justify-content:flex-start;flex-wrap:wrap"><button type="button" id="bkgo">Guardar cópia</button><button type="button" id="bkld" class="g">Carregar cópia</button><input type="file" id="bkfile" accept=".json,application/json" hidden></div><p class="note" id="bkmsg" style="min-height:1.2em"></p></fieldset><div class="exact"><button type="button" id="bkx" class="g">Fechar</button></div></div>';
+  m.innerHTML='<div class="exbox"><h3>Os meus dados</h3><p style="font-size:13.5px;line-height:1.5;margin:6px 0">'+st+'</p><p class="note">Agora: <span id="datacount">'+ALL.length+' operações e '+((CFG.main.stm||[]).length)+' extratos</span>.</p>'+nm+rec+ajBlock()+'<fieldset><legend>Cópia de segurança</legend><p class="note">Um ficheiro com as operações, os totais dos extratos e as definições. Não inclui os PDF nem nomes ou números de conta. Serve para guardar uma cópia ou levar os dados para outro aparelho.</p><div class="exact" style="justify-content:flex-start;flex-wrap:wrap"><button type="button" id="bkgo">Guardar cópia</button><button type="button" id="bkld" class="g">Carregar cópia</button><input type="file" id="bkfile" accept=".json,application/json" hidden></div><p class="note" id="bkmsg" style="min-height:1.2em"></p></fieldset><div class="exact"><button type="button" id="bkx" class="g">Fechar</button></div></div>';
   document.body.appendChild(m);
   m.querySelector('#bkgo').onclick=bkDownload;
   m.querySelector('#bkld').onclick=()=>m.querySelector('#bkfile').click();
@@ -923,7 +975,7 @@ function renderSim(){
 function setWS(w){WS=w;try{localStorage.setItem('vinci_ws',w)}catch(e){}XP=null;$('xprev').innerHTML='';$('xmsg').textContent='';render()}
 function wsUI(){
   $('wmain').classList.toggle('on',WS==='main');$('wsim').classList.toggle('on',WS==='sim');
-  $('wban').innerHTML=WS==='sim'?'<div class="card" style="border:2px solid var(--ac);background:var(--gl)"><b style="color:var(--or)">MODO SIMULAÇÃO</b> — folha em branco com todas as regras a funcionar. Os seus registos reais não são alterados. <button class="g" id="wcopy">Copiar os meus registos para aqui</button></div>':'';
+  $('wban').innerHTML=simBanner();
   updDock();
 }
 function renderRep(){
@@ -1518,6 +1570,110 @@ async function qFetchJson(){
   }catch(e){}
 }
 qFetchJson();setInterval(qFetchJson,60000);
+/* --- ajuda opcional: guia de início, exemplo e dicas ⓘ (nunca obrigatória) --- */
+const AJK='vinci_ajuda',GUK='vinci_guia';
+const ajMode=()=>{try{return localStorage.getItem(AJK)||'normal'}catch(e){return 'normal'}};
+const ajSet=v=>{try{localStorage.setItem(AJK,v)}catch(e){}};
+const guiaFlag=k=>{try{return localStorage.getItem(GUK+'_'+k)==='1'}catch(e){return false}};
+const guiaMark=k=>{try{localStorage.setItem(GUK+'_'+k,'1')}catch(e){}};
+const AJHINTS=[
+ ['Custo fiscal','Preço médio de aquisição das ações em carteira, pelo método FIFO (as mais antigas saem primeiro). É a base de cálculo da mais-valia.','fifo'],
+ ['Mais-valia latente','Ganho ou perda ainda não realizado: valor atual menos custo fiscal. Só se torna imposto quando resgata.','mais-valia'],
+ ['Mais-valia realizada','Ganho ou perda dos resgates já feitos: valor de realização menos custo de aquisição, lote a lote (FIFO).','fifo'],
+ ['Disponíveis hoje','Unidades já livres para resgatar: terminou o prazo de indisponibilidade (3 anos, a contar de cada subscrição).','cativo'],
+ ['Cativas','Unidades ainda sujeitas ao prazo de indisponibilidade de 3 anos.','cativo'],
+ ['Bonificações a maturar','Ações gratuitas previstas: atribuídas no fim dos 3 anos de cada subscrição, segundo o escalão do plano.','bonific'],
+ ['Imposto estimado','Estimativa à taxa configurada, sobre a mais-valia realizada nos resgates. É informativa e não substitui a declaração.','mais-valia'],
+ ['Lucro líquido realizado','Mais-valia realizada menos o imposto estimado.',''],
+ ['Total comprado','Total das subscrições registadas, ao valor pago.',''],
+ ['Total resgatado','Total dos resgates registados, ao valor recebido.',''],
+ ['Dinheiro investido','Total das subscrições pagas por si.',''],
+ ['Valor atual da posição','Unidades em carteira à cotação atual.',''],
+ ['Ações em carteira','Número de unidades que tem hoje (livres e cativas).','']
+];
+function addHints(){
+  document.querySelectorAll('#hl .fl>span:first-child,#kpis .k>small').forEach(el=>{
+    if(el.querySelector('.ih'))return;
+    const t=el.textContent.trim().toLowerCase(),h=AJHINTS.find(x=>t.startsWith(x[0].toLowerCase()));
+    if(!h)return;
+    const b=document.createElement('button');b.type='button';b.className='ih';b.textContent='ⓘ';b.dataset.h=h[0];b.setAttribute('aria-label','O que é: '+h[0]);
+    el.appendChild(b);
+  });
+}
+function ihClose(){const p=document.getElementById('ihp');if(p)p.remove()}
+function ihOpen(b){
+  ihClose();
+  const h=AJHINTS.find(x=>x[0]===b.dataset.h);if(!h)return;
+  const p=document.createElement('div');p.id='ihp';p.setAttribute('role','tooltip');
+  p.innerHTML='<b>'+h[0]+'</b>'+h[1]+(h[2]?'<br><a href="#" data-gl="'+h[2]+'">Ver no glossário</a>':'');
+  document.body.appendChild(p);
+  const r=b.getBoundingClientRect(),w=Math.min(300,window.innerWidth-16);
+  p.style.width=w+'px';p.style.left=Math.max(8,Math.min(r.left+window.scrollX-8,window.innerWidth-w-8))+'px';p.style.top=(r.bottom+window.scrollY+6)+'px';
+}
+function ajGoto(id,sec){
+  if(sec!=null){SECOPEN.add(sec);applySec()}
+  const d=document.getElementById(id);if(d){d.open=true;d.scrollIntoView({behavior:'smooth',block:'start'})}
+}
+function renderGuia(){
+  let g=document.getElementById('guia');
+  const on=ajMode()==='guiado'&&WS==='main'&&!(typeof PERSONAL!=='undefined'&&PERSONAL&&false);
+  if(!on){if(g)g.remove();return}
+  const tg=document.getElementById('topgrid');if(!tg)return;
+  if(!g){g=document.createElement('div');g.id='guia';g.className='card';tg.before(g)}
+  const has=ops.length>0||((cfg.stm||[]).length>0),s1=has,s2=has&&guiaFlag('avisos'),s3=has&&guiaFlag('imposto');
+  const li=(ok,t,d,btn,id)=>'<li class="'+(ok?'ok':'')+'"><span class="gk">'+(ok?'✓':'')+'</span><div><b>'+t+'</b><small>'+d+'</small>'+(btn?'<button type="button" class="g" id="'+id+'">'+btn+'</button>':'')+'</div></li>';
+  g.innerHTML='<div class="gh"><h2>Como começar</h2><button type="button" class="g" id="gx">Já conheço, esconder</button></div><ol class="gl">'
+   +li(s1,'1. Importe o seu primeiro extrato','Descarregue o extrato em PDF da sua área Amundi e largue-o em «Importar extrato». A plataforma lê as operações sozinha.','Abrir o importador','gb1')
+   +li(s2,'2. Confira os totais e os avisos','Em «Verificações» diz o que falta (extratos de anos anteriores, dividendos, diferenças de unidades) e como resolver.','Ver as verificações','gb2')
+   +li(s3,'3. Veja o imposto estimado','Por ano, com o quadro para o Modelo 3 e a simulação do IRS.','Ver o imposto','gb3')
+   +'</ol><p class="note" style="margin:6px 0 0">Prefere primeiro ver como funciona? <button type="button" class="g" id="gex">Ver um exemplo com dados fictícios</button> <span>(vai para a folha de simulação e não mexe nos seus registos)</span></p>';
+}
+function renderAjuda(){try{renderGuia();addHints()}catch(e){}}
+function simBanner(){
+  if(WS!=='sim')return '';
+  const ex=CFG.sim&&CFG.sim.ex;
+  return '<div class="card" style="border:2px solid var(--ac);background:var(--gl)"><b style="color:var(--or)">SIMULAÇÃO</b> — folha para experimentar «e se…», com todas as regras a funcionar: acrescente operações, simule resgates e veja o imposto, sem alterar os seus registos reais. <button class="g" id="wcopy">Copiar os meus registos para aqui</button> <button class="g" id="wex">Ver um exemplo</button>'+(ex?'<div class="note" style="margin-top:6px">Está a ver um <b>exemplo com dados fictícios</b>. O «Reset» apaga-o.</div>':'')+'</div>';
+}
+function ajBlock(){
+  return '<fieldset><legend>Ajuda</legend><label class="exopt"><input type="checkbox" id="ajg"'+(ajMode()==='guiado'?' checked':'')+'><span><b>Mostrar o guia de início</b><small>Três passos para começar. As explicações ⓘ de cada termo ficam sempre disponíveis.</small></span></label><div class="exact" style="justify-content:flex-start"><button type="button" class="g" id="ajex">Ver um exemplo com dados fictícios</button></div></fieldset>';
+}
+const EXOPS=[
+ {t:'C',d:'2018-07-03',q:20,p:60},{t:'C',d:'2019-07-02',q:25,p:65},{t:'C',d:'2020-07-01',q:30,p:55},{t:'C',d:'2021-07-01',q:30,p:70},
+ {t:'D',d:'2019-04-23',q:0.40,p:62},{t:'D',d:'2019-11-05',q:0.35,p:66},{t:'D',d:'2020-04-21',q:0.80,p:58},{t:'D',d:'2021-04-20',q:1.10,p:72},{t:'D',d:'2022-04-26',q:1.30,p:80},{t:'D',d:'2023-04-25',q:1.50,p:90},{t:'D',d:'2024-04-23',q:1.70,p:96},
+ {t:'B',d:'2021-07-05',q:30,p:71},{t:'B',d:'2022-07-04',q:35,p:76},{t:'B',d:'2023-07-03',q:40,p:88},{t:'B',d:'2024-07-02',q:40,p:95},
+ {t:'V',d:'2022-05-10',q:20,p:82},{t:'V',d:'2024-06-11',q:35,p:98}
+];
+async function loadExample(){
+  const n=ALL.filter(o=>o.ws==='sim').length;
+  if(n>0&&!(await ask('A folha de simulação já tem '+n+(n===1?' operação':' operações')+'. Quer substituí-las pelo exemplo com dados fictícios? Os seus registos reais não são alterados.')))return;
+  const dm=document.getElementById('datam');if(dm)dm.remove();
+  setWS('sim');
+  UBATCH++;
+  try{
+    const old=ALL.filter(o=>o.ws==='sim');
+    if(col){for(const o of old)await col.doc(o.id).delete()}else{ALL=ALL.filter(o=>o.ws!=='sim')}
+    for(const o of EXOPS){await addOp(Object.assign({f:0},o))}
+    CFG.sim=Object.assign({px:0,rate:28,emp:1},CFG.sim,{ex:1});
+    WS='sim';view();await saveCfg();
+  }finally{UBATCH--}
+  view();render();
+  try{window.scrollTo({top:0,behavior:'smooth'})}catch(e){}
+}
+document.addEventListener('click',e=>{
+  const t=e.target,ih=t.closest&&t.closest('.ih');
+  if(ih){e.preventDefault();e.stopPropagation();const open=document.getElementById('ihp');if(open&&open.dataset.for===ih.dataset.h){ihClose();return}ihOpen(ih);const p=document.getElementById('ihp');if(p)p.dataset.for=ih.dataset.h;return}
+  const gl=t.closest&&t.closest('#ihp a[data-gl]');
+  if(gl){e.preventDefault();const q=gl.dataset.gl;ihClose();SECOPEN.add(3);applySec();const d=document.getElementById('glcard');if(d){d.open=true;const i=document.getElementById('gsq');if(i){i.value=q;i.dispatchEvent(new Event('input',{bubbles:true}))}d.scrollIntoView({behavior:'smooth',block:'start'})}return}
+  if(!(t.closest&&t.closest('#ihp')))ihClose();
+  const id=t.id||(t.closest&&t.closest('button')&&t.closest('button').id)||'';
+  if(id==='gb1'){const c=document.getElementById('impcard');if(c){c.open=true;c.scrollIntoView({behavior:'smooth',block:'start'})}}
+  else if(id==='gb2'){guiaMark('avisos');ajGoto('cd_chk',3);renderAjuda()}
+  else if(id==='gb3'){guiaMark('imposto');ajGoto('cd_irs',2);renderAjuda()}
+  else if(id==='gx'){ajSet('normal');renderAjuda()}
+  else if(id==='gex'||id==='wex'||id==='ajex'){loadExample()}
+});
+document.addEventListener('change',e=>{if(e.target&&e.target.id==='ajg'){ajSet(e.target.checked?'guiado':'normal');renderAjuda()}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')ihClose()});
 function renderChecks(){
   const c=calc(),al=[],stm=(cfg.stm||[]).slice().sort((a,b)=>a.dt.localeCompare(b.dt)),cy=+TODAY.slice(0,4);
   let h='';
@@ -1786,7 +1942,7 @@ function fixKnown(){
   (cfg.fx=cfg.fx||[]).push('Data do resgate corrigida de 11/07/2021 para 11/10/2021 (segundo o extrato de 2021).');
   UBATCH++;try{updateOp(o.id,{d:'2021-10-11'})}finally{UBATCH--}
 }
-function render(){view();render0();renderSim();renderRep();renderSums();renderChecks();renderPair();renderOrigin();renderHist();renderDiv();renderAmu();renderSnap();renderExcl();renderWho();renderQChip();renderImpState();renderIrs();renderVis();applyDim();fixKnown();balanceTop();wsUI();pxInfo();if(!FIXING&&fixPlan().length){FIXING=true;setTimeout(async()=>{try{await autoFixBonus()}finally{FIXING=false}},0)}}
+function render(){view();render0();renderSim();renderRep();renderSums();renderChecks();renderPair();renderOrigin();renderHist();renderDiv();renderAmu();renderSnap();renderExcl();renderWho();renderQChip();renderAjuda();renderImpState();renderIrs();renderVis();applyDim();fixKnown();balanceTop();wsUI();pxInfo();if(!FIXING&&fixPlan().length){FIXING=true;setTimeout(async()=>{try{await autoFixBonus()}finally{FIXING=false}},0)}}
 function render0(){
   $('px').value=cfg.px>0?cfg.px.toLocaleString('pt-PT',{minimumFractionDigits:2,maximumFractionDigits:2}):'';
   if(document.activeElement!==$('rate'))$('rate').value=cfg.rate;
